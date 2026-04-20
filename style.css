@@ -8728,5 +8728,51 @@ code {
 body {
   line-height: 1.5;
 }
+/* =========================
+   CLEAN TABLE MOBILE FIX
+========================= */
 
+@media (max-width: 768px) {
+
+  .table-wrap,
+  .products-table-box,
+  .users-table-box,
+  .table-container {
+    overflow-x: auto !important;
+    padding: 0 8px !important;
+  }
+
+  table {
+    min-width: 900px !important;
+    background: #fff;
+  }
+
+  th {
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+
+  td {
+    font-size: 12px !important;
+    white-space: nowrap;
+    padding: 8px 6px !important;
+  }
+
+  /* أهم سطر */
+  tr {
+    border-bottom: 1px solid #eee;
+  }
+
+  /* الأزرار */
+  td:last-child {
+    display: flex;
+    gap: 6px;
+  }
+
+  td button {
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+
+}
 
