@@ -8993,11 +8993,63 @@ body {
   }
 }
 
-
 .menu-toggle {
-  font-size: 22px;
-  background: none;
+  display: none;
+  width: 46px;
+  height: 46px;
   border: none;
-  color: white;
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.16);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
   cursor: pointer;
+  flex-shrink: 0;
 }
+
+.sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dashboard {
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .sidebar {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    width: 280px !important;
+    max-width: 82vw;
+    height: 100vh;
+    z-index: 9999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    display: none;
+  }
+
+  .sidebar-backdrop.show {
+    display: block;
+  }
+}
+
