@@ -8775,4 +8775,67 @@ body {
   }
 
 }
+@media (max-width: 768px) {
 
+  /* اخفاء السايدبار */
+  .sidebar,
+  .side-menu,
+  .main-sidebar,
+  .dashboard-sidebar {
+    display: none !important;
+  }
+
+  /* خلي المحتوى ياخذ كامل العرض */
+  .main,
+  .content,
+  .page-content,
+  .products-modern-main {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .products-table-box,
+  .table-wrap {
+    overflow-x: auto !important;
+    padding-bottom: 10px;
+  }
+
+  table {
+    min-width: 900px !important;
+  }
+
+  table th,
+  table td {
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .products-actions,
+  .topbar-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+  }
+
+  .products-actions button,
+  .products-actions label {
+    width: 100% !important;
+  }
+
+}
+@media (max-width: 768px) {
+
+  body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+}
