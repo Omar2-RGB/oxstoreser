@@ -1,0 +1,47 @@
+{
+  "name": "oxstore",
+  "version": "1.0.0",
+  "description": "Ox Store desktop app",
+  "main": "main.js",
+  "author": "Omar",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "server": "node server.js",
+    "build": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "isexe": "^2.0.0",
+    "mongodb": "^7.1.1"
+  },
+  "build": {
+    "appId": "com.oxstore.app",
+    "productName": "Ox Store",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*"
+    ],
+    "electronDist": "electron-runtime",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "31.0.2",
+    "electron-builder": "26.8.1"
+  },
+  "keywords": [],
+  "license": "ISC"
+}

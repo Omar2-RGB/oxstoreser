@@ -1,0 +1,9 @@
+node_modules
+dist
+electron-runtime
+*.db
+*.exe
+*.log
+*.shm
+*.wal
+server/.git

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>قارئ الباركود</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+    }
+
+    input {
+      width: 90%;
+      padding: 15px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .price {
+      color: #22c55e;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📱 قارئ الباركود</h2>
+
+  <input id="barcode" placeholder="امسح الباركود" autofocus />
+
+  <div id="result" class="card">
+    <p>بانتظار المسح...</p>
+  </div>
+
+  <script>
+    const input = document.getElementById("barcode");
+    const result = document.getElementById("result");
+
+    input.addEventListener("keydown", async (e) => {
+      if (e.key !== "Enter") return;
+
+      const code = input.value.trim();
+      input.value = "";
+
+const product = await fetch(`http://172.20.10.7:3000/product?code=${code}`)
+  .then(res => res.json());
+
+      if (!product) {
+        result.innerHTML = "❌ المنتج غير موجود";
+        return;
+      }
+
+      result.innerHTML = `
+        <h3>${product.name}</h3>
+        <p>الكمية: ${product.stock}</p>
+        <div class="price">${product.price}</div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
