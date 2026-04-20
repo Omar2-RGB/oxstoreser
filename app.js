@@ -1764,7 +1764,7 @@ if (usernameInput && passwordInput) {
 function renderDashboard() {
   document.body.innerHTML = `
     <div class="dashboard">
-      <aside class="sidebar">
+      <aside class="sidebar" id="sidebar">
         <div>
           <div class="logo">${escapeHtml(appSettings.storeName)}</div>
           <ul>
@@ -1784,8 +1784,11 @@ function renderDashboard() {
         <div class="sidebar-user" id="logout">تسجيل الخروج ↩️</div>
       </aside>
 
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
       <main class="main">
         <div class="topbar">
+          <button class="menu-toggle" id="menuToggle">☰</button>
           <h2 id="pageTitle">لوحة التحكم</h2>
           <div class="user">👤 admin</div>
         </div>
@@ -1802,6 +1805,27 @@ function renderDashboard() {
   if (logoutBtn) {
     logoutBtn.onclick = () => location.reload();
   }
+
+  const menuToggle = document.getElementById("menuToggle");
+  const sidebar = document.getElementById("sidebar");
+  const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+
+  menuToggle?.addEventListener("click", () => {
+    sidebar?.classList.toggle("show");
+    sidebarBackdrop?.classList.toggle("show");
+  });
+
+  sidebarBackdrop?.addEventListener("click", () => {
+    sidebar?.classList.remove("show");
+    sidebarBackdrop?.classList.remove("show");
+  });
+
+  document.querySelectorAll(".nav").forEach((item) => {
+    item.addEventListener("click", () => {
+      sidebar?.classList.remove("show");
+      sidebarBackdrop?.classList.remove("show");
+    });
+  });
 }
 
 /* =========================
