@@ -8449,6 +8449,284 @@ div.clean-bottom-box {
   max-width: 1200px;
   margin: 0 auto;
 }
+/* =========================
+   MOBILE OVERRIDE FINAL
+   حطه آخر style.css
+========================= */
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+body,
+input,
+select,
+textarea,
+button {
+  font-size: 16px;
+}
+
+.main,
+#content,
+.page,
+.page-content,
+.products-modern-main,
+.products-modern-page,
+.customers-page,
+.reports-page,
+.settings-page,
+.suppliers-page,
+.pos-modern-page,
+.dashboard-clean-page,
+.home-page {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* الهيدر العلوي */
+.topbar {
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}
+
+.topbar-actions {
+  width: 100% !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+
+.topbar input {
+  width: 100% !important;
+}
+
+/* أزرار عامة */
+.blue-btn,
+.green-btn,
+.teal-btn,
+.primary-full-btn,
+.secondary-full-btn,
+.white-btn,
+.btn-add,
+.btn-import,
+.btn-export,
+.products-file-label,
+.pos-btn,
+.login-btn,
+.hero-btn,
+.about-btn {
+  width: 100%;
+  min-height: 48px;
+}
+
+/* الجداول */
+.table-wrap,
+.products-table-box,
+.users-table-box,
+.table-container,
+.table-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+table,
+.products-table,
+.products-modern-table,
+.compact-table,
+.invoice-table {
+  width: 100% !important;
+  min-width: 700px !important;
+  border-collapse: collapse !important;
+}
+
+table th,
+table td,
+.products-table th,
+.products-table td,
+.products-modern-table th,
+.products-modern-table td,
+.compact-table th,
+.compact-table td,
+.invoice-table th,
+.invoice-table td {
+  white-space: nowrap !important;
+  font-size: 13px !important;
+  padding: 10px 8px !important;
+}
+
+/* المودالات */
+.modal-overlay {
+  padding: 12px !important;
+  align-items: flex-start !important;
+}
+
+.modal-card,
+.modal-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  border-radius: 18px !important;
+  max-height: 90vh !important;
+}
+
+.modal-body,
+.modal-header {
+  padding: 16px !important;
+}
+
+.form-grid {
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+}
+
+/* صفحة تسجيل الدخول */
+.login-shell {
+  grid-template-columns: 1fr !important;
+  width: 100% !important;
+  gap: 0 !important;
+}
+
+.login-brand-side {
+  display: none !important;
+}
+
+.login-card,
+.login-wrapper .login-card {
+  width: 100% !important;
+  max-width: 420px !important;
+  margin: 0 auto !important;
+  padding: 22px 16px !important;
+  border-radius: 20px !important;
+}
+
+.login-card-top h2,
+.login-card h2 {
+  font-size: 26px !important;
+}
+
+.login-card-top p,
+.login-subtitle,
+.login-hint .hint-text {
+  font-size: 14px !important;
+}
+
+.login-input,
+.modal-input,
+.pos-modern-input,
+.search-row input,
+.products-modern-search-row input,
+#barcodeInput {
+  height: 46px !important;
+  font-size: 14px !important;
+ 
+  padding: 0 12px !important;
+}
+
+/* الأزرار داخل الفورم */
+.login-actions,
+.form-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.login-actions button,
+.form-actions button {
+  width: 100% !important;
+}
+
+/* صفحة POS */
+.pos-modern-page {
+  padding: 10px !important;
+}
+
+.pos-modern-layout {
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.pos-modern-left,
+.pos-modern-right {
+  width: 100% !important;
+}
+
+.pos-modern-cart {
+  max-height: none !important;
+}
+
+/* الكروت */
+.card,
+.stat-card,
+.dashboard-card {
+  width: 100% !important;
+}
+
+/* الشبكات */
+.grid,
+.cards-grid,
+.dashboard-grid {
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+}
+
+/* البحث */
+.search-row,
+.products-modern-search-row {
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.search-row input,
+.products-modern-search-row input {
+  width: 100% !important;
+}
+
+/* تحسين المسافات العامة */
+.section,
+.block,
+.container {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+/* إصلاح أي overflow غبي */
+.row,
+.flex,
+.d-flex {
+  flex-wrap: wrap !important;
+}
+
+/* منع العناصر الكبيرة من كسر الشاشة */
+pre,
+code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+}
+
+/* آخر لمسة */
+body {
+  line-height: 1.5;
+}
 
 
