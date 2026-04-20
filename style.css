@@ -8992,3 +8992,12 @@ body {
     padding: 20px 14px !important;
   }
 }
+
+
+.menu-toggle {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
