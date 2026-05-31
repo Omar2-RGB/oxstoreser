@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>قارئ الباركود</title>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body style="background:#0f172a;color:white;text-align:center">
+
+<h2>📱 امسح الباركود</h2>
+
+<div id="reader" style="width:300px;margin:auto"></div>
+<div id="result">بانتظار المسح...</div>
+<script>
+  const resultDiv = document.getElementById("result");
+ let scanning = true;
+let lastCode = "";
+
+async function onScanSuccess(decodedText) {
+  if (!scanning) return;
+
+  // منع تكرار نفس الباركود
+  if (decodedText === lastCode) return;
+
+  scanning = false;
+  lastCode = decodedText;
+
+  const resultDiv = document.getElementById("result");
+
+  resultDiv.innerHTML = `
+    <div style="font-size:20px;color:#22c55e">
+      تم قراءة: ${decodedText}
+    </div>
+  `;
+
+  try {
+    const res = await fetch("/product?code=" + encodeURIComponent(decodedText), {
+      cache: "no-store"
+    });
+
+    const html = await res.text();
+    resultDiv.innerHTML = html;
+
+  } catch (err) {
+    resultDiv.innerHTML = `<div style="color:red">خطأ بالاتصال</div>`;
+  }
+
+  // 🔥 مهم جدًا: إعادة التفعيل
+  setTimeout(() => {
+    scanning = true;
+  }, 1500);
+}
+
+  async function startScanner() {
+    try {
+      html5QrCode = new Html5Qrcode("reader");
+      const devices = await Html5Qrcode.getCameras();
+
+      if (!devices || !devices.length) {
+        resultDiv.innerHTML = "ما في كاميرا متاحة";
+        return;
+      }
+
+      await html5QrCode.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        onScanSuccess
+      );
+    } catch (err) {
+      console.error(err);
+      resultDiv.innerHTML = "تعذر تشغيل الكاميرا";
+    }
+  }
+
+  startScanner();
+</script>
+</body>
+</html>
