@@ -886,9 +886,10 @@ async function handleLogin() {
       renderDashboard();
     }, 500);
 
-  } catch (error) {
-    console.error("خطأ تسجيل الدخول:", error);
-    alert("صار خطأ أثناء تسجيل الدخول");
+  }catch (error) {
+  console.error("خطأ تسجيل الدخول:", error);
+  alert("صار خطأ أثناء تسجيل الدخول:\n" + (error?.message || error));
+
 
     btn.disabled = false;
     btn.innerText = "تسجيل الدخول";
