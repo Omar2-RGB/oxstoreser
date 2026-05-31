@@ -12,6 +12,7 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.106.2",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "isexe": "^2.0.0",
