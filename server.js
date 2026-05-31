@@ -31,22 +31,38 @@ function todayDate() {
 /* =========================
    AUTH
 ========================= */
+/* =========================
+   AUTH
+========================= */
 app.post("/api/auth/login", async (req, res) => {
   try {
     const username = String(req.body.username || "").trim();
     const password = String(req.body.password || "").trim();
 
+    // البحث عن المستخدم (أوقفنا شرط is_active مؤقتاً للفحص)
     const { data: user, error } = await supabase
       .from("users")
       .select("*")
       .eq("username", username)
-      .eq("is_active", 1)
       .single();
 
-    if (error || !user || user.password !== password) {
+    // هذه الأسطر ستطبع لنا سبب المشكلة بالضبط في شاشة Render
+    console.log("👉 1. البيانات المستلمة من المتصفح:", { username, password });
+    console.log("👉 2. الخطأ من قاعدة البيانات (إن وجد):", error);
+    console.log("👉 3. المستخدم الذي تم إيجاده:", user);
+
+    if (error || !user) {
+      console.log("❌ فشل: المستخدم غير موجود أو هناك خطأ في الاتصال");
       return res.status(401).json({ success: false, message: "بيانات الدخول غير صحيحة" });
     }
 
+    if (user.password !== password) {
+      console.log("❌ فشل: كلمة المرور غير متطابقة!");
+      console.log(`الموجودة: "${user.password}" | المدخلة: "${password}"`);
+      return res.status(401).json({ success: false, message: "بيانات الدخول غير صحيحة" });
+    }
+
+    // جلب الصلاحيات
     const { data: roleRow } = await supabase
       .from("role_permissions")
       .select("permissions")
@@ -54,6 +70,8 @@ app.post("/api/auth/login", async (req, res) => {
       .single();
 
     const permissions = user.role === "admin" ? ["all"] : (roleRow ? JSON.parse(roleRow.permissions || "[]") : []);
+
+    console.log("✅ نجاح: تم تسجيل الدخول");
 
     return res.json({
       success: true,
@@ -70,6 +88,7 @@ app.post("/api/auth/login", async (req, res) => {
     return res.status(500).json({ success: false, message: "login error" });
   }
 });
+
 
 /* =========================
    USERS
